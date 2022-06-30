@@ -1,5 +1,5 @@
 body{
-    font-family: ;
+    font-family: 'Open Sans', sans-serif;
     height: 100vh;
     background:
         radial-gradient(circle, rgba(0,0,0,0) 25%, rgba(0,0,0,.66) 100%),
@@ -7,11 +7,17 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;
-    text-align: center;
+}
+
+.container{
+    max-width: 85%;
+    margin: 0 auto;
 }
 
 button, a {
     cursor: pointer;
+    font-family: inherit;
+    text-decoration: none;
 }
 
 .opening-screen-container{
@@ -20,6 +26,7 @@ button, a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .logo{
@@ -27,8 +34,6 @@ button, a {
 }
 
 .btn{
-    font-family: inherit;
-    text-decoration: none;
     background: #0dbbe0;
     background: linear-gradient(to bottom, #0dbbe0, #0283ab);
     border: none;
@@ -46,4 +51,115 @@ button, a {
 
 .btn-start-game{
     margin-top: 5rem;
+}
+
+.btn-cash-out{
+    display: block;
+    margin-top: 1.25rem;
+    text-align: left;
+    font-size: 1.75rem;
+    box-shadow: none;
+    color: #3ab84c;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.btn-cash-out:hover{
+    background: none;
+    color: #289c3b;
+}
+
+.cash-out-icon{
+    display: inline-block;
+    text-align: center;
+    margin-right: 0.5rem;
+    padding: 0.10rem .75rem;
+    border: 3px solid;
+    border-radius: 50%;
+}
+
+.balance {
+    font-size: 1.75rem;
+    max-width: max-content;
+    background: #123650;
+    padding: 1rem 1.5rem;
+    border-radius: 10px 10px 0 0;
+}
+
+.funds {
+    max-width: 60%;
+    bottom: 0;
+    position: absolute;
+}
+
+.chips {
+    background: #123650;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    border-radius: 0 10px 0 0 ;
+}
+
+.chip {
+    cursor: pointer;
+    height: 150px;
+    width: 150px;
+    position: relative;
+    text-align: center;
+    transition: all .2s ease-in-out;
+}
+
+.chip:hover{
+    transform: scale(1.05);
+}
+
+.chip-black{
+    background: url('./assets/chips/chip-black.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0px 3px;
+}
+.chip-blue{
+    background: url('./assets/chips/chip-blue.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0px 3px;
+}
+.chip-green{
+    background: url('./assets/chips/chip-green.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0px 3px;
+}
+.chip-gray{
+    background: url('./assets/chips/chip-gray.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0px 3px;
+}
+.chip-yellow{
+    background: url('./assets/chips/chip-yellow.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 3px 3px;
+}
+
+.chip-red{
+    background: url('./assets/chips/chip-red.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0px 3px;
+}
+
+.chip span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000;
+    font-weight: 700;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

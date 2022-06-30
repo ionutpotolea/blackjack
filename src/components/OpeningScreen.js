@@ -12,7 +12,7 @@ export default function OpeningScreen(props){
         <div className='opening-screen-container'>
             <img src={logo} className="logo" alt="game logo" />
             <Link
-                to="/PlayGame"
+                to="/play-game"
                 className='btn btn-start-game'
                 onClick={startGame}
             >
