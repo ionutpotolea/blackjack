@@ -1,46 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react'
+import Chip from './Chip'
 
 export default function Chips(props){
-    const {gameState, setGameState} = props
+    const {gameState, setGameState, gameData} = props
     
     function placeBet(bet){
+        console.log("bet placed!")
         setGameState(prevState => ({
             ...prevState,
             bet: bet
         }))
     }
+
+    function renderChips(){
+        return gameData.availableBetOptions.map(betOption => {
+            return gameState.bet !== betOption ? (<Chip
+                key={betOption}
+                betOption={betOption}
+                setGameState={setGameState}
+                gameState={gameState}
+                chipAction={() => placeBet(betOption)}
+            />) : ""
+        })
+    }
+    
     return (
         <div className='chips'>
-            <div
-                className='chip chip-black'
-                onClick={() => placeBet(1)}
-            >
-                <span>1</span>
-            </div>
-            <div
-                className='chip chip-blue'
-                onClick={() => placeBet(5)}
-            >
-                <span>5</span>
-            </div>
-            <div
-                className='chip chip-green'
-                onClick={() => placeBet(10)}
-            >
-                <span>10</span>
-            </div>
-            <div
-                className='chip chip-yellow'
-                onClick={() => placeBet(50)}
-            >
-                <span>50</span>
-            </div>
-            <div
-                className='chip chip-red'
-                onClick={() => placeBet(100)}
-            >
-                <span>100</span>
-            </div>
+            {gameData.availableBetOptions && renderChips()}
         </div>
     )
 }

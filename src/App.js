@@ -14,10 +14,10 @@ function App() {
   })
   return (
     <Switch>
-      <Route exact path='/'>
+      <Route exact path='/blackjack'>
         <OpeningScreen setGameState={setGameState}/>
       </Route>
-      <Route path='/play-game'>
+      <Route path='/blackjack/play-game'>
         <PlayGame setGameState={setGameState} gameState={gameState}/>
       </Route>
     </Switch>
