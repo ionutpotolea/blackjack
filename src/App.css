@@ -79,6 +79,12 @@ button, a {
     border-radius: 50%;
 }
 
+.btn-deal{
+    padding: 1rem 2.5rem;
+    text-transform: uppercase;
+    margin-left: 2.5rem;
+}
+
 .balance {
     font-size: 1.75rem;
     max-width: max-content;
@@ -102,15 +108,18 @@ button, a {
 }
 
 .chip {
-    cursor: pointer;
-    height: 150px;
-    width: 150px;
+    height: 15vh;
+    width: 15vh;
     position: relative;
     text-align: center;
     transition: all .2s ease-in-out;
 }
 
-.chip:hover{
+.chip-unlocked{
+    cursor: pointer;
+}
+
+.chip-unlocked:hover{
     transform: scale(1.05);
 }
 
@@ -166,6 +175,37 @@ button, a {
 }
 
 .current-bet {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -65%);
     max-width: max-content;
     margin: 1rem auto;
+    display: flex;
+    align-items: center;
+}
+
+.cards{
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.playerCards,
+.dealerCards
+{
+    display: flex;
+    padding: 5rem 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.playing-card{
+    max-width: 20vh;
+}
+
+.playing-card + .playing-card{
+    margin-left: 1rem;
 }

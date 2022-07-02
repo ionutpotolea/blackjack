@@ -1,11 +1,10 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Chip from './Chip'
 
 export default function Chips(props){
-    const {gameState, setGameState, gameData} = props
+    const {gameState, setGameState} = props
     
     function placeBet(bet){
-        console.log("bet placed!")
         setGameState(prevState => ({
             ...prevState,
             bet: bet
@@ -13,20 +12,21 @@ export default function Chips(props){
     }
 
     function renderChips(){
-        return gameData.availableBetOptions.map(betOption => {
-            return gameState.bet !== betOption ? (<Chip
+        return gameState.availableBetOptions.map(betOption => {
+            return gameState.bet !== betOption ? (
+            <Chip
                 key={betOption}
                 betOption={betOption}
-                setGameState={setGameState}
                 gameState={gameState}
                 chipAction={() => placeBet(betOption)}
-            />) : ""
+            />
+            ) : ""
         })
     }
     
     return (
         <div className='chips'>
-            {gameData.availableBetOptions && renderChips()}
+            {gameState.availableBetOptions && renderChips()}
         </div>
     )
 }
