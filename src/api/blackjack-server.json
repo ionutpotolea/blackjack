@@ -1,0 +1,71 @@
+[
+    {
+        "sit-response": {
+            "availableBetOptions": [
+                1,
+                5,
+                10,
+                50,
+                100
+            ],
+            "sessionId": "c2eb4389-afac-422a-a84c-82ae6a94d1aa"
+        },
+
+        "deal-request": {
+            "bet": 1,
+            "sessionId": "c2eb4389-afac-422a-a84c-82ae6a94d1aa"
+        },
+
+        "deal-response": {
+            "dealerCards": [
+                {
+                    "rank": 9,
+                    "suite": "Hearts"
+                }
+            ],
+            "playerCards": [
+                {
+                    "rank": "Q",
+                    "suite": "Spades"
+                },
+                {
+                    "rank": 8,
+                    "suite": "Clubs"
+                }
+            ],
+            "roundEnded": false,
+            "winAmount": 0,
+            "currentBalance": 1000
+        },
+
+        "turn-request": {
+            "action": "string",
+            "sessionId": "c2eb4389-afac-422a-a84c-82ae6a94d1aa"
+        },
+
+        "turn-response": {
+            "playerCard": {
+                "rank": "6",
+                "suite": "Clubs"
+            },
+            "dealerCards": [
+                {
+                    "rank": "9",
+                    "suite": "Hearts"
+                },
+                {
+                    "rank": "9",
+                    "suite": "Diamonds"
+                }
+            ],
+            "roundEnded": true,
+            "winAmount": -1,
+            "currentBalance": 999
+        },
+
+        "stand-response" : {
+            "roundsPlayed": 1,
+            "winAmount": -1
+        }
+    }
+]

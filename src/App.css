@@ -55,6 +55,7 @@ button, a {
 
 .btn-cash-out{
     display: block;
+    max-width: max-content;
     margin-top: 1.25rem;
     text-align: left;
     font-size: 1.75rem;
@@ -162,4 +163,10 @@ button, a {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.current-bet {
+    /* background: red; */
+    max-width: max-content;
+    margin: 1rem auto;
 }

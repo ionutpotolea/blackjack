@@ -1,26 +1,27 @@
 import React, { useEffect } from 'react';
 import {Link} from "react-router-dom"
 import Chips from "./Chips"
+import CurrentBet from "./CurrentBet"
 
 export default function PlayGame(props){
-    const {gameState} = props
-    console.log(JSON.stringify({
-        balance: gameState.balance
-    }))
+    const {gameState, setGameState} = props
     useEffect(() => {
         fetch('https://blackjack.fuzz.me.uk/sit', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json; charset=utf-8",
               },
             body: {
-                "balance": gameState.balance
+                "balance": 1000
             }
         })
-        .then(res => res.json())
+        .then(res => {
+            res.json()
+        })
         .then(data => console.log(data))
         .catch(err => console.error(err))
     }, [])
+
     return (
         <div className='container'>
             <div className='game-board'>
@@ -34,9 +35,10 @@ export default function PlayGame(props){
                     <span>Cash out</span>
                 </Link>
             }
+            <CurrentBet gameState={gameState} setGameState={setGameState}/>
             <section className='funds'>
-                <div className='balance'>Balance: <strong>${`${gameState.balance}`}</strong></div>
-                <Chips />
+                <div className='balance'>Balance: <strong>${`${gameState.balance-gameState.bet}`}</strong></div>
+                <Chips gameState={gameState} setGameState={setGameState} />
             </section>
             </div>
         </div>
