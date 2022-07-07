@@ -1,10 +1,10 @@
 import React from 'react'
 import Card from './Card'
+import Message from './Message' 
 import {calculateCardsSum} from '../utils/functions.js'
 
 export default function PlayerCards(props){
     const {gameState} = props
-    // console.log("playerCards", gameState.playerCards)
     const renderedPlayerCards = gameState.playerCards ? gameState.playerCards.map(
         (card, index) => (
             <Card
@@ -19,11 +19,18 @@ export default function PlayerCards(props){
             <div className='cards-container'>
                 {renderedPlayerCards}
             </div>
-            {gameState.dealerCards !== undefined &&
+            {gameState.playerCards !== undefined &&
             (<div className='sum-of-cards'>
                 <span className='sum-of-cards-number'>{calculateCardsSum(gameState.playerCards)}</span>
                 <span className='sum-of-cards-label'>Player</span>
             </div>)}
+            {gameState.roundEnded &&
+                <Message
+                    message={`You ${gameState.winAmount > 0 ? "win" : "lose"}`}
+                    color={gameState.winAmount > 0 ? "orange" : "darkgray"}
+                    delayed={gameState.winAmount > 0 ? false : true}
+                />
+            }
         </div>
     )
 }

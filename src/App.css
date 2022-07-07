@@ -255,10 +255,6 @@ button, a {
 
 .game-actions{
     width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 .game-actions .chip-container{
@@ -317,3 +313,64 @@ button, a {
     font-size: 1.5rem;
     font-weight: 500;
 }
+
+@keyframes messageScale {
+    0% {
+      transform: translate(-50%, 0) scale(0);
+    }
+    100% {
+      transform: translate(-50%, 0) scale(1);
+    }
+}
+
+@keyframes delayedmessageScale {
+    0% {
+        transform: translate(-50%, 0) scale(0);
+    }
+    50% {
+        transform: translate(-50%, 0) scale(0);
+    }
+    100% {
+        transform: translate(-50%, 0) scale(1);
+    }
+}
+
+.message{
+    max-width: 600px;
+    width: 60%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+    animation: 1s ease-out 0s messageScale;
+}
+
+.message-delayed{
+    animation: 2s ease-out 0s delayedmessageScale;
+}
+
+.message-ribbon {
+    max-width: 100%;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222);
+    z-index: 2;
+}
+
+.message-text{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, .75rem);
+    font-weight: 700;
+    font-size: 2.25rem;
+    z-index: 100;
+}
+
+
+
+.game-actions-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+

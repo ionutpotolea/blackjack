@@ -5,7 +5,13 @@ import {Link} from "react-router-dom"
 export default function OpeningScreen(props){
     const {setGameState} = props
     function startGame(){
-        setGameState(prevState => ({...prevState, gameStarted: true}))
+        setGameState({
+            gameStarted: true,
+            currentBalance: 1000,
+            bet: 0,
+            roundStarted: false,
+            roundEnded: false
+        })
     }
 
     return (

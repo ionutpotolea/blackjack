@@ -75,14 +75,27 @@ export default function GameActions(props){
         }
     }
 
+    function repeatBet(){
+        console.log(gameState)
+    }
+
+    function newBet(){
+        console.log(gameState)
+    }
+
+    function cashOut(){
+        console.log(gameState)
+    }
+
     return (
         <div className='game-actions-container'>
-            <div className='game-actions'>
-                <Chip
-                    betOption={gameState.bet}
-                    gameState={gameState}
-                    staked={true}
-                />
+            {!gameState.roundEnded && (
+                <div className='game-actions'>
+                    <Chip
+                        betOption={gameState.bet}
+                        gameState={gameState}
+                        staked={true}
+                    />
                 <div className='game-action-buttons'>
                     <button
                         className='btn btn-game-action btn-hit'
@@ -107,6 +120,29 @@ export default function GameActions(props){
                     </button>
                 </div>
             </div>
+            )}
+            {gameState.roundEnded && (
+                <div className='game-action-buttons'>
+                    <button
+                        className='btn btn-game-action'
+                        onClick={repeatBet}
+                    >
+                        Repeat last bet
+                    </button>
+                    <button
+                        className='btn btn-game-action'
+                        onClick={newBet}
+                    >
+                        New bet
+                    </button>
+                    <button
+                        className='btn btn-game-action'
+                        onClick={cashOut}
+                    >
+                        Cash out
+                    </button>
+                </div>
+            )}
         </div>
     )
 }

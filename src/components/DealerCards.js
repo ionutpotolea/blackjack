@@ -1,10 +1,10 @@
 import React from 'react'
 import Card from './Card'
+import Message from './Message'
 import {calculateCardsSum} from '../utils/functions.js'
 
 export default function DealerCards(props){
     const {gameState} = props
-    // console.log("dealerCards", gameState.dealerCards)
 
     function renderDealerCards(){
         if(gameState.dealerCards){
@@ -35,6 +35,13 @@ export default function DealerCards(props){
                 <span className='sum-of-cards-number'>{calculateCardsSum(gameState.dealerCards)}</span>
                 <span className='sum-of-cards-label'>Dealer</span>
             </div>)}
+            {gameState.roundEnded &&
+                <Message
+                    message={`Dealer ${gameState.winAmount < 0 ? "wins" : "loses"}`}
+                    color={gameState.winAmount < 0 ? "blue" : "darkgray"}
+                    delayed={gameState.winAmount < 0 ? false : true}
+                />
+            }
         </div>
     )
 }
