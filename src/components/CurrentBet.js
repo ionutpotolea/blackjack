@@ -13,7 +13,11 @@ export default function CurrentBet(props){
     }
 
     function dealCards(){
-        setGameState(prevState => ({...prevState, roundStarted: true}))
+        setGameState(prevState => ({
+            ...prevState,
+            roundStarted: true,
+            gameStarted: true
+        }))
         fetch('https://blackjack.fuzz.me.uk/deal', {
             method: 'POST',
             headers: {
@@ -38,7 +42,9 @@ export default function CurrentBet(props){
                 betOption={gameState.bet}
                 gameState={gameState}
                 chipAction={removeBet}
-            />}
+                staked={true}
+            />
+            }
             {(gameState.bet!==0 && !gameState.roundStarted) &&
             <button
                 className='btn btn-deal'

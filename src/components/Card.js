@@ -1,5 +1,4 @@
 import React from "react"
-import backSide from "../assets/cards/back-side.png"
 
 export default function Card(props){
     const {card} = props

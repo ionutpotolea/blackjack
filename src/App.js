@@ -7,11 +7,13 @@ import PlayGame from './components/PlayGame.js';
 
 function App() {
   const [gameState, setGameState] = useState({
-    started: false,
-    balance: 1000,
+    gameStarted: false,
+    currentBalance: 1000,
     bet: 0,
-    roundStarted: false
+    roundStarted: false,
+    roundEnded: false
   })
+  console.log(gameState)
   return (
     <Switch>
       <Route exact path='/blackjack'>

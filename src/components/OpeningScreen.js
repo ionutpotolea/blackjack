@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 export default function OpeningScreen(props){
     const {setGameState} = props
     function startGame(){
-        setGameState(prevState => ({...prevState, started: true}))
+        setGameState(prevState => ({...prevState, gameStarted: true}))
     }
 
     return (

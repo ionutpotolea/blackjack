@@ -82,7 +82,7 @@ button, a {
 .btn-deal{
     padding: 1rem 2.5rem;
     text-transform: uppercase;
-    margin-left: 2.5rem;
+    margin-left: 10vw;
 }
 
 .balance {
@@ -161,7 +161,7 @@ button, a {
     background-position: 0px 3px;
 }
 
-.chip span {
+.chip-amount {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -204,8 +204,116 @@ button, a {
 
 .playing-card{
     max-width: 20vh;
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0, 0.18);
 }
 
 .playing-card + .playing-card{
-    margin-left: 1rem;
+    margin-left: -9rem;
+}
+
+.btn-game-action{
+    background: linear-gradient(to bottom, #36c14a, #23a61a);
+    padding: 0;
+    width: 12vw;
+    margin: 0 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-game-action:hover{
+    background: linear-gradient(to bottom, #1ab22c, #0d8607);
+}
+
+.btn-double{
+    flex-direction: column;
+    border-radius: 50%;
+    height: 10vh;
+    width: 10vh;
+    text-align: center;
+    padding: 0;
+}
+
+.btn-double span.top-text{
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.btn-double span.bottom-text{
+    display: block;
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.game-action-buttons{
+    display: flex;
+    justify-content: center;
+}
+
+.game-actions{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.game-actions .chip-container{
+    z-index: -1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-35%, -50%); 
+    display: flex;
+    align-items: center;
+}
+
+.btn-game-action img {
+    max-width: 2rem;
+    margin-right: 1rem;
+    filter: invert(100%);
+}
+
+.current-bet-amount{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-left: .5rem;
+}
+
+.chip-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cards-container{
+    display: flex;
+}
+
+.sum-of-cards{
+    position: absolute;
+    right: 7vw;
+    display: flex;
+    align-items: center;
+}
+
+.sum-of-cards-number{
+    font-size: 2.25rem;
+    font-weight: 700;
+    width: 4rem;
+    height: 4rem;
+    line-height: 4rem;
+    border-radius: 50%;
+    background: rgba(0,0,0, 0.18);
+}
+
+.sum-of-cards-label{
+    margin-left: .5rem;
+    color: #33bc3b;
+    font-size: 1.5rem;
+    font-weight: 500;
 }

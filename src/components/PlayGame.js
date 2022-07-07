@@ -4,6 +4,7 @@ import Chips from "./Chips"
 import CurrentBet from "./CurrentBet"
 import PlayerCards from "./PlayerCards"
 import DealerCards from "./DealerCards"
+import GameActions from "./GameActions"
 
 export default function PlayGame(props){
     const {gameState, setGameState} = props
@@ -31,26 +32,35 @@ export default function PlayGame(props){
             <div className='game-board'>
             {
                 !gameState.roundStarted &&
-                <Link
-                    to="end-game"
-                    className='btn-cash-out'
-                >
-                    <span className="cash-out-icon">$</span>
-                    <span>Cash out</span>
-                </Link>
+                <div>
+                    <Link
+                        to="end-game"
+                        className='btn-cash-out'
+                    >
+                        <span className="cash-out-icon">$</span>
+                        <span>Cash out</span>
+                    </Link>
+                    <CurrentBet
+                        gameState={gameState}
+                        setGameState={setGameState}
+                    />
+                </div>
             }
-            <CurrentBet
-                gameState={gameState}
-                setGameState={setGameState}
-            />
+            
             {gameState.roundStarted && (
-                <section className='cards'>
-                    <DealerCards gameState={gameState}/>
-                    <PlayerCards gameState={gameState}/>
-                </section>
+                <div>
+                    <section className='cards'>
+                        <DealerCards gameState={gameState}/>
+                        <PlayerCards gameState={gameState}/>
+                    </section>
+                    <GameActions
+                        gameState={gameState}
+                        setGameState={setGameState}
+                    />
+                </div>
             )}
             <section className='funds'>
-                <div className='balance'>Balance: <strong>${`${gameState.balance-gameState.bet}`}</strong></div>
+                <div className='balance'>Balance: <strong>${`${gameState.currentBalance-gameState.bet}`}</strong></div>
                 {!gameState.roundStarted &&
                 <Chips
                     gameState={gameState}

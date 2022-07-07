@@ -12,13 +12,14 @@ export default function Chips(props){
     }
 
     function renderChips(){
-        return gameState.availableBetOptions.map(betOption => {
+        return gameState.availableBetOptions.map((betOption, index) => {
             return gameState.bet !== betOption ? (
             <Chip
-                key={betOption}
+                key={index}
                 betOption={betOption}
                 gameState={gameState}
                 chipAction={() => placeBet(betOption)}
+                staked={false}
             />
             ) : ""
         })
