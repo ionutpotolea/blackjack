@@ -26,6 +26,34 @@ export default function PlayGame(props){
         })
         .catch(err => console.error(err))
     }, [])
+
+    function cashOut(){
+        fetch('https://blackjack.fuzz.me.uk/stand', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                  },
+                body: `sessionId=${gameState.sessionId}`
+            })
+            .then(res => res.json())
+            .then(data => { 
+                setGameState(prevState => ({
+                    ...prevState,
+                    dealerCards: null,
+                    dealerCard: null,
+                    playerCards: null,
+                    playerCard: null,
+                    roundEnded: false,
+                    roundStarted: false,
+                    availableBetOptions: [],
+                    bet: 0,
+                    gameStarted: false,
+                    sessionId: "",
+                    ...data
+                }))
+            })
+            .catch(err => console.error(err))
+    }
     
     return (
         <div className='container'>
@@ -36,6 +64,7 @@ export default function PlayGame(props){
                     <Link
                         to="end-game"
                         className='btn btn-top'
+                        onClick={cashOut}
                     >
                         <img src={dollarIcon} alt=""/>
                         <span>Cash out</span>

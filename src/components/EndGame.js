@@ -4,7 +4,6 @@ import logo from '../images/logo.png'
 
 export default function EndGame(props){
     const {gameState, setGameState} = props
-    console.log("received gs", gameState)
 
     function startGame(){
         setGameState(prevState => ({
@@ -14,7 +13,6 @@ export default function EndGame(props){
             roundsPlayed: 0,
             winAmount: 0
         }))
-        console.log("startGame: ", gameState)
     }
 
     return (

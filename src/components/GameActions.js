@@ -131,7 +131,6 @@ export default function GameActions(props){
             })
             .then(res => res.json())
             .then(data => { 
-                console.log("api stand response", data)
                 setGameState(prevState => ({
                     ...prevState,
                     ...resetState,
@@ -141,7 +140,6 @@ export default function GameActions(props){
                     sessionId: "",
                     ...data
                 }))
-                console.log("new state", gameState)
             })
             .catch(err => console.error(err))
     }
