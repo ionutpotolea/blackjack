@@ -3,6 +3,7 @@ import Chip from './Chip'
 
 export default function CurrentBet(props){
     const {gameState, setGameState} = props
+
     function removeBet(){
         if (!gameState.roundStarted){
             setGameState(prevState => ({
@@ -37,6 +38,7 @@ export default function CurrentBet(props){
 
     return (
         <div className='current-bet'>
+
             {gameState.bet!==0 &&
             <Chip
                 betOption={gameState.bet}
@@ -45,6 +47,7 @@ export default function CurrentBet(props){
                 staked={true}
             />
             }
+
             {(gameState.bet!==0 && !gameState.roundStarted) &&
             <button
                 className='btn btn-deal'
@@ -52,6 +55,7 @@ export default function CurrentBet(props){
             >
                 Deal
             </button>}
+            
         </div>
     )
 }

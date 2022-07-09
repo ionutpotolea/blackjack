@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import {Link} from "react-router-dom"
 import Chips from "./Chips"
-import CurrentBet from "./CurrentBet"
-import PlayerCards from "./PlayerCards"
-import DealerCards from "./DealerCards"
+import PlaceBet from "./PlaceBet"
+import Cards from "./Cards"
 import GameActions from "./GameActions"
+import dollarIcon from '../assets/icons/circe-dollar-sign-solid.svg'
+
 
 export default function PlayGame(props){
     const {gameState, setGameState} = props
@@ -14,7 +15,7 @@ export default function PlayGame(props){
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
               },
-            body: `balance=${1000}`
+            body: `balance=${gameState.currentBalance}`
         })
         .then(res => res.json())
         .then(data => { 
@@ -22,7 +23,6 @@ export default function PlayGame(props){
                 ...prevState,
                 ...data
             }))
-            console.log("api called!")
         })
         .catch(err => console.error(err))
     }, [])
@@ -35,12 +35,12 @@ export default function PlayGame(props){
                 <div>
                     <Link
                         to="end-game"
-                        className='btn-cash-out'
+                        className='btn btn-top'
                     >
-                        <span className="cash-out-icon">$</span>
+                        <img src={dollarIcon} alt=""/>
                         <span>Cash out</span>
                     </Link>
-                    <CurrentBet
+                    <PlaceBet
                         gameState={gameState}
                         setGameState={setGameState}
                     />
@@ -50,8 +50,8 @@ export default function PlayGame(props){
             {gameState.roundStarted && (
                 <div>
                     <section className='cards'>
-                        <DealerCards gameState={gameState}/>
-                        <PlayerCards gameState={gameState}/>
+                        {gameState.dealerCards && <Cards gameState={gameState} owner="dealerCards"/>}
+                        {gameState.playerCards && <Cards gameState={gameState} owner="playerCards"/>}
                     </section>
                     <GameActions
                         gameState={gameState}
@@ -60,7 +60,7 @@ export default function PlayGame(props){
                 </div>
             )}
             <section className='funds'>
-                <div className='balance'>Balance: <strong>${`${gameState.currentBalance-gameState.bet}`}</strong></div>
+                <div className='balance'>Balance: <strong>${`${gameState.currentBalance}`}</strong></div>
                 {!gameState.roundStarted &&
                 <Chips
                     gameState={gameState}

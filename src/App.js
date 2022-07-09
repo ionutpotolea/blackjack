@@ -3,6 +3,7 @@ import {Switch, Route} from "react-router-dom"
 import './App.css';
 import OpeningScreen from './components/OpeningScreen.js';
 import PlayGame from './components/PlayGame.js';
+import EndGame from './components/EndGame.js';
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
     roundStarted: false,
     roundEnded: false
   })
-  console.log(gameState)
+  
   return (
     <Switch>
       <Route exact path='/blackjack'>
@@ -21,6 +22,9 @@ function App() {
       </Route>
       <Route path='/blackjack/play-game'>
         <PlayGame setGameState={setGameState} gameState={gameState}/>
+      </Route>
+      <Route path='/blackjack/end-game'>
+        <EndGame setGameState={setGameState} gameState={gameState}/>
       </Route>
     </Switch>
   )

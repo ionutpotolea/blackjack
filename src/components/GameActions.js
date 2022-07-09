@@ -1,7 +1,12 @@
 import React from 'react'
+import {Link} from "react-router-dom"
 import Chip from './Chip'
 import handIcon from '../assets/icons/hand-solid.svg'
+import newBetIcon from '../assets/icons/circle-plus-solid.svg'
 import addCardIcon from '../assets/icons/square-plus-solid.svg'
+import repeatBetIcon from '../assets/icons/arrow-rotate-right-solid.svg'
+import dollarIcon from '../assets/icons/circe-dollar-sign-solid.svg'
+
 
 export default function GameActions(props){
     const {gameState, setGameState} = props
@@ -75,16 +80,70 @@ export default function GameActions(props){
         }
     }
 
+    const resetState = {
+        dealerCards: null,
+        dealerCard: null,
+        playerCards: null,
+        playerCard: null,
+        roundEnded: false,
+        roundStarted: false,
+        winAmount: 0
+    }
+
     function repeatBet(){
-        console.log(gameState)
+        setGameState(prevState => ({
+            ...prevState,
+            ...resetState
+        }))
+        fetch('https://blackjack.fuzz.me.uk/deal', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+              },
+            body: `bet=${gameState.bet}&sessionId=${gameState.sessionId}`
+        })
+        .then(res => res.json())
+        .then(data => { 
+            setGameState(prevState => ({
+                ...prevState,
+                roundStarted: true,
+                ...data
+            }))
+        })
+        .catch(err => console.error(err))
     }
 
     function newBet(){
-        console.log(gameState)
+        setGameState(prevState => ({
+            ...prevState,
+            ...resetState,
+            bet: 0,
+        }))
     }
 
     function cashOut(){
-        console.log(gameState)
+        fetch('https://blackjack.fuzz.me.uk/stand', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                  },
+                body: `sessionId=${gameState.sessionId}`
+            })
+            .then(res => res.json())
+            .then(data => { 
+                console.log("api stand response", data)
+                setGameState(prevState => ({
+                    ...prevState,
+                    ...resetState,
+                    availableBetOptions: [],
+                    bet: 0,
+                    gameStarted: false,
+                    sessionId: "",
+                    ...data
+                }))
+                console.log("new state", gameState)
+            })
+            .catch(err => console.error(err))
     }
 
     return (
@@ -127,20 +186,26 @@ export default function GameActions(props){
                         className='btn btn-game-action'
                         onClick={repeatBet}
                     >
-                        Repeat last bet
+                        <img src={repeatBetIcon} alt=""/>
+                        <span>Bet ${gameState.bet}</span>
                     </button>
+
                     <button
                         className='btn btn-game-action'
                         onClick={newBet}
                     >
-                        New bet
+                        <img src={newBetIcon} alt=""/>
+                        <span>New bet</span>
                     </button>
-                    <button
+
+                    <Link
+                        to="/blackjack/end-game"
                         className='btn btn-game-action'
                         onClick={cashOut}
                     >
-                        Cash out
-                    </button>
+                        <img src={dollarIcon} alt=""/>
+                        <span>Cash out</span>
+                    </Link>
                 </div>
             )}
         </div>

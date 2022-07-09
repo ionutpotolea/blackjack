@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"
+import React from "react"
 import darkgrayRibbon from '../images/ribbon-banner-darkgray.png'
 import blueRibbon from '../images/ribbon-banner-blue.png'
 import greenRibbon from '../images/ribbon-banner-green.png'

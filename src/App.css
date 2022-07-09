@@ -53,9 +53,9 @@ button, a {
     margin-top: 5rem;
 }
 
-.btn-cash-out{
-    display: block;
-    max-width: max-content;
+.btn-top{
+    display: flex;
+    background: none;
     text-align: left;
     font-size: 1.75rem;
     padding-top: 1.25rem;
@@ -65,9 +65,17 @@ button, a {
     font-weight: 700;
 }
 
-.btn-cash-out:hover{
+.btn.btn-top img{
+    filter: invert(62%) sepia(15%) saturate(2050%) hue-rotate(77deg) brightness(94%) contrast(80%);
+}
+
+.btn-top:hover{
     background: none;
     color: #289c3b;
+}
+
+.btn.btn-top:hover img{
+    filter: invert(49%) sepia(16%) saturate(1878%) hue-rotate(78deg) brightness(96%) contrast(93%);
 }
 
 .cash-out-icon{
@@ -203,19 +211,20 @@ button, a {
 }
 
 .playing-card{
-    max-width: 20vh;
+    max-width: 11vw;
     box-shadow: 0px 0px 15px 0px rgba(0,0,0, 0.18);
 }
 
 .playing-card + .playing-card{
-    margin-left: -9rem;
+    margin-left: -9.3vw;
 }
 
 .btn-game-action{
     background: linear-gradient(to bottom, #36c14a, #23a61a);
     padding: 0;
-    width: 12vw;
-    margin: 0 5rem;
+    width: 18vw;
+    min-height: 4.7rem;
+    margin: 0 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -267,7 +276,7 @@ button, a {
     align-items: center;
 }
 
-.btn-game-action img {
+.btn img {
     max-width: 2rem;
     margin-right: 1rem;
     filter: invert(100%);
@@ -337,7 +346,7 @@ button, a {
 
 .message{
     max-width: 600px;
-    width: 60%;
+    width: 50vw;
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
@@ -362,10 +371,15 @@ button, a {
     transform: translate(-50%, .75rem);
     font-weight: 700;
     font-size: 2.25rem;
+    line-height: 1.6;
     z-index: 100;
 }
 
-
+@media (max-width: 1200px) {
+    .message-text{
+        font-size: 3vw;
+    }
+}
 
 .game-actions-container{
     position: absolute;
@@ -374,3 +388,49 @@ button, a {
     transform: translate(-50%, -50%)
 }
 
+.end-game-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: #3a3a3c;
+}
+
+.end-game-container .logo{
+    margin: 3rem 0;
+    max-width: 240px;
+}
+
+.end-game-container .stats{
+    padding: 1rem;
+    background: white;
+    border-radius: 20px;
+    text-align: left;
+    min-width: 18vw;
+    border: 10px solid #3a3a3c;
+    overflow: hidden;
+}
+
+.end-game-container .stats-title{
+    margin-top: 0;
+}
+
+.end-game-container .stats-list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.end-game-container .stats-item{
+    display: flex;
+    justify-content: space-between;
+}
+
+.positive strong{
+    color:#0d8607;
+}
+
+.negative strong{
+    color:red;
+}
