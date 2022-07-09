@@ -78,15 +78,6 @@ button, a {
     filter: invert(49%) sepia(16%) saturate(1878%) hue-rotate(78deg) brightness(96%) contrast(93%);
 }
 
-.cash-out-icon{
-    display: inline-block;
-    text-align: center;
-    margin-right: 0.5rem;
-    padding: 0.10rem .75rem;
-    border: 3px solid;
-    border-radius: 50%;
-}
-
 .btn-deal{
     padding: 1rem 2.5rem;
     text-transform: uppercase;
