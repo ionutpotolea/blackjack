@@ -81,7 +81,7 @@ button, a {
 .btn-deal{
     padding: 1rem 2.5rem;
     text-transform: uppercase;
-    margin-left: 10vw;
+    margin-left: 3rem;
 }
 
 .balance {
@@ -213,9 +213,9 @@ button, a {
 .btn-game-action{
     background: linear-gradient(to bottom, #36c14a, #23a61a);
     padding: 0;
-    width: 18vw;
+    width: 13vw;
     min-height: 4.7rem;
-    margin: 0 3rem;
+    margin: 0 5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -257,14 +257,21 @@ button, a {
     width: 100%;
 }
 
+.current-bet .chip-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .game-actions .chip-container{
     z-index: -1;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-35%, -50%); 
+    transform: translate(-28.5%, -50%);
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .btn img {
@@ -278,12 +285,7 @@ button, a {
     font-weight: 700;
     color: #fff;
     margin-left: .5rem;
-}
-
-.chip-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-width: 5.8rem;
 }
 
 .cards-container{
@@ -366,12 +368,6 @@ button, a {
     z-index: 100;
 }
 
-@media (max-width: 1200px) {
-    .message-text{
-        font-size: 3vw;
-    }
-}
-
 .game-actions-container{
     position: absolute;
     top: 50%;
@@ -424,4 +420,14 @@ button, a {
 
 .negative strong{
     color:red;
+}
+
+@media (max-width: 1200px) {
+    .message-text{
+        font-size: 3vw;
+    }
+    .btn-hit,
+    .btn-stand{
+        width: 9.75rem;
+    }
 }
