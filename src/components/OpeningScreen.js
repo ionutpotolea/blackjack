@@ -1,17 +1,14 @@
 import React from 'react'
 import {Link} from "react-router-dom"
-import logo from '../images/logo.png'
+import logo from '../assets/images/logo.png'
 
 export default function OpeningScreen(props){
     const {setGameState} = props
     function startGame(){
-        setGameState({
-            gameStarted: true,
-            currentBalance: 1000,
-            bet: 0,
-            roundStarted: false,
-            roundEnded: false
-        })
+        setGameState(prevState => ({
+            ...prevState,
+            gameStarted: true
+        }))
     }
 
     return (

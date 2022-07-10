@@ -1,6 +1,6 @@
 import React, {useState} from "react"
-import {useHistory} from "react-router-dom"
-import logo from '../images/logo.png'
+import {Link, useHistory} from "react-router-dom"
+import logo from '../assets/images/logo.png'
 
 export default function AddFunds(props){
     const {gameState, setGameState} = props
@@ -9,6 +9,12 @@ export default function AddFunds(props){
     })
     let history = useHistory();
 
+    function startGame(){
+        setGameState(prevState => ({
+            ...prevState,
+            gameStarted: true
+        }))
+    }
 
     function handleChange(event){
         const {name, value} = event.target
@@ -52,7 +58,13 @@ export default function AddFunds(props){
                     Add Funds
                 </button>
             </form>
-            
+            <Link
+                to="/blackjack/play-game"
+                className='btn btn-primary'
+                onClick={startGame}
+            >
+                Play
+            </Link>
         </div>
     )
 }

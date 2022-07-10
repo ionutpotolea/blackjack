@@ -13,10 +13,10 @@ function App() {
     currentBalance: 1000,
     availableBetOptions: [],
     bet: 0,
+    winAmount: 0,
     double: false,
     roundStarted: false,
-    roundEnded: false,
-    winAmount: 0
+    roundEnded: false
   })
 
   return (

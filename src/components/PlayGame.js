@@ -9,7 +9,6 @@ import dollarIcon from '../assets/icons/circe-dollar-sign-solid.svg'
 
 export default function PlayGame(props){
     const {gameState, setGameState} = props
-
     useEffect(() => {
         fetch('https://blackjack.fuzz.me.uk/sit', {
             method: 'POST',
@@ -62,14 +61,24 @@ export default function PlayGame(props){
             {
                 !gameState.roundStarted &&
                 <div>
-                    <Link
-                        to="end-game"
-                        className='btn btn-top'
-                        onClick={cashOut}
-                    >
-                        <img src={dollarIcon} alt=""/>
-                        <span>Cash out</span>
-                    </Link>
+                    <div className='top-btns'>
+                        <Link
+                            to="end-game"
+                            className='btn btn-top'
+                            onClick={cashOut}
+                        >
+                            <img src={dollarIcon} alt=""/>
+                            <span>Cash out</span>
+                        </Link>
+                        <Link
+                            to="add-funds"
+                            className='btn btn-top'
+                        >
+                            <img src={dollarIcon} alt=""/>
+                            <span>Add funds</span>
+                        </Link>
+                    </div>
+
                     <PlaceBet
                         gameState={gameState}
                         setGameState={setGameState}

@@ -1,8 +1,8 @@
 import React from "react"
-import darkgrayRibbon from '../images/ribbon-banner-darkgray.png'
-import blueRibbon from '../images/ribbon-banner-blue.png'
-import greenRibbon from '../images/ribbon-banner-green.png'
-import orangeRibbon from '../images/ribbon-banner-orange.png'
+import darkgrayRibbon from '../assets/images/ribbon-banner-darkgray.png'
+import blueRibbon from '../assets/images/ribbon-banner-blue.png'
+import greenRibbon from '../assets/images/ribbon-banner-green.png'
+import orangeRibbon from '../assets/images/ribbon-banner-orange.png'
 
 export default function Message(props){
     const {message, color, delayed} = props

@@ -50,7 +50,7 @@ export default function CurrentBet(props){
 
             {(gameState.bet!==0 && !gameState.roundStarted) &&
             <button
-                className='btn btn-deal'
+                className='btn btn-primary btn-deal'
                 onClick={dealCards}
             >
                 Deal

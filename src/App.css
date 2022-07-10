@@ -3,7 +3,7 @@ body{
     height: 100vh;
     background:
         radial-gradient(circle, rgba(0,0,0,0) 25%, rgba(0,0,0,.66) 100%),
-        url('images/blackjack-bg-2.jpg');
+        url('./assets/images/blackjack-bg-2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;
@@ -39,12 +39,21 @@ button, a {
     background: linear-gradient(to bottom, #0dbbe0, #0283ab);
     border: none;
     border-radius: 5px;
+    color: #fff;
+    font-size: 1.75rem;
+}
+
+.btn-primary{
+    background: #0dbbe0;
+    background: linear-gradient(to bottom, #0dbbe0, #0283ab);
+    border: none;
+    border-radius: 5px;
     padding: 1rem 4rem;
     color: #fff;
     font-size: 1.75rem;
     -webkit-box-shadow: 0px 0px 15px 0px #000000; 
     box-shadow: 0px 0px 15px 0px #000000;
-}
+}   
 
 .btn:hover{
     background: linear-gradient(to bottom, #04b0d8, #037b96);
@@ -54,12 +63,25 @@ button, a {
     margin-top: 5rem;
 }
 
+.top-btns{
+    display: flex;
+}
+
+.btn-top + .btn-top {
+    margin-left: auto;
+}
+
+.btn-top span{
+    min-width: max-content;
+}
+
 .btn-top{
     display: flex;
+    align-items: center;
+    justify-content: center;
     background: none;
-    text-align: left;
     font-size: 1.75rem;
-    padding-top: 1.25rem;
+    padding: 1.25rem 1rem;
     box-shadow: none;
     color: #3ab84c;
     text-transform: uppercase;
@@ -251,6 +273,8 @@ button, a {
     display: flex;
     align-items: center;
     justify-content: center;
+    -webkit-box-shadow: 0px 0px 15px 0px #000000; 
+    box-shadow: 0px 0px 15px 0px #000000;
 }
 
 .btn-game-action:hover{
@@ -305,7 +329,7 @@ button, a {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-29.5%, -50%);
+    transform: translate(-29.25%, -50%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -425,11 +449,12 @@ button, a {
 
 .end-game-container .logo,
 .add-funds-container .logo{
-    margin: 3rem 0;
     max-width: 240px;
+    margin: 3rem 0 0 0;
 }
 
 .add-funds-form{
+    margin: 3rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -437,7 +462,7 @@ button, a {
 }
 
 .add-funds-input{
-    border: 2px solid #3a3a3c;
+    border: 1px solid #3a3a3c;
     border-radius: 5px;
     font-size: 2rem;
     font-weight: 700;
@@ -450,6 +475,7 @@ button, a {
 .add-funds-btn{
     box-shadow: none;
     width: 100%;
+    font-size: 1.25rem;
 }
 
 .add-funds-btn:link{
