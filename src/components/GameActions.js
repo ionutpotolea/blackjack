@@ -11,6 +11,7 @@ import dollarIcon from '../assets/icons/circe-dollar-sign-solid.svg'
 
 export default function GameActions(props){
     const {gameState, setGameState} = props
+    console.log(gameState)
 
     function hit(){
         if(!gameState.roundEnded){
@@ -28,7 +29,7 @@ export default function GameActions(props){
                     ...prevState,
                     dealerCards: [...prevState.dealerCards, dealerCards],
                     playerCards: [...prevState.playerCards, playerCard],
-                    double: data.roundEnded ? false : prevState.double,
+                    doubleAvailable: false,
                     ...data
                 }))
             })
@@ -51,6 +52,7 @@ export default function GameActions(props){
                 setGameState(prevState => ({
                     ...prevState,
                     double: true,
+                    doubleAvailable: false,
                     dealerCards: [...prevState.dealerCards, dealerCards],
                     playerCards: [...prevState.playerCards, playerCard],
                     ...data,
@@ -146,7 +148,7 @@ export default function GameActions(props){
                         gameState={gameState}
                         staked={true}
                     />
-                <div className={`game-action-buttons ${gameState.currentBalance<gameState.bet*2 ? 'no-double': ''}`}>
+                <div className={`game-action-buttons ${gameState.currentBalance<gameState.bet*2 || !gameState.doubleAvailable ? 'no-double': ''}`}>
                     {
                         !gameState.double &&
                         <button
@@ -158,7 +160,9 @@ export default function GameActions(props){
                         </button>
                     }
                     {
-                        (!gameState.double && gameState.currentBalance>=gameState.bet*2) &&
+                        (gameState.doubleAvailable
+                            && !gameState.double
+                            && gameState.currentBalance>=gameState.bet*2) &&
                         <button
                             className='btn btn-game-action btn-double'
                             onClick={double}

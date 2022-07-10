@@ -52,6 +52,7 @@ const resetState = {
     playerCards: null,
     playerCard: null,
     double: false,
+    doubleAvailable: true,
     roundEnded: false,
     roundStarted: false,
     winAmount: 0

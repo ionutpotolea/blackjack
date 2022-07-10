@@ -12,6 +12,14 @@ export default function Chips(props){
                 })
             }))
         }
+        if(gameState.currentBalance<100 &&
+            gameState.currentBalance>2 &&
+            !gameState.availableBetOptions.includes(2)){
+            setGameState(prevState => ({
+                ...prevState,
+                availableBetOptions: [...prevState.availableBetOptions, 2].sort((a, b) => a-b)
+            }))
+        }
     // eslint-disable-next-line
     }, [gameState.currentBalance])
 
