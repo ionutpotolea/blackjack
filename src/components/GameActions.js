@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom"
 import Chip from './Chip'
+import {resetState} from '../utils/utils'
 import handIcon from '../assets/icons/hand-solid.svg'
 import newBetIcon from '../assets/icons/circle-plus-solid.svg'
 import addCardIcon from '../assets/icons/square-plus-solid.svg'
@@ -27,6 +28,7 @@ export default function GameActions(props){
                     ...prevState,
                     dealerCards: [...prevState.dealerCards, dealerCards],
                     playerCards: [...prevState.playerCards, playerCard],
+                    double: data.roundEnded ? false : prevState.double,
                     ...data
                 }))
             })
@@ -48,10 +50,10 @@ export default function GameActions(props){
                 const {dealerCards, playerCard} = data
                 setGameState(prevState => ({
                     ...prevState,
-                    bet: prevState.bet*2,
+                    double: true,
                     dealerCards: [...prevState.dealerCards, dealerCards],
                     playerCards: [...prevState.playerCards, playerCard],
-                    ...data
+                    ...data,
                 }))
             })
             .catch(err => console.error(err))
@@ -73,21 +75,12 @@ export default function GameActions(props){
                 setGameState(prevState => ({
                     ...prevState,
                     dealerCards: [...prevState.dealerCards, dealerCards],
+                    double: data.roundEnded ? false : prevState.double,
                     ...data
                 }))
             })
             .catch(err => console.error(err))
         }
-    }
-
-    const resetState = {
-        dealerCards: null,
-        dealerCard: null,
-        playerCards: null,
-        playerCard: null,
-        roundEnded: false,
-        roundStarted: false,
-        winAmount: 0
     }
 
     function repeatBet(){
@@ -117,7 +110,7 @@ export default function GameActions(props){
         setGameState(prevState => ({
             ...prevState,
             ...resetState,
-            bet: 0,
+            bet: 0
         }))
     }
 
@@ -153,23 +146,31 @@ export default function GameActions(props){
                         gameState={gameState}
                         staked={true}
                     />
-                <div className='game-action-buttons'>
+                <div className={`game-action-buttons ${gameState.currentBalance<gameState.bet*2 ? 'no-double': ''}`}>
+                    {
+                        !gameState.double &&
+                        <button
+                            className='btn btn-game-action btn-hit'
+                            onClick={hit}
+                        >
+                            <img src={addCardIcon} alt=""/>
+                            <span>Hit</span>
+                        </button>
+                    }
+                    {
+                        (!gameState.double && gameState.currentBalance>=gameState.bet*2) &&
+                        <button
+                            className='btn btn-game-action btn-double'
+                            onClick={double}
+                        >
+                            <span className='top-text'>Double</span>
+                            <span className='bottom-text'>X2</span>
+                        </button>
+                    }
+                    
+                    
                     <button
-                        className='btn btn-game-action btn-hit'
-                        onClick={hit}
-                    >
-                        <img src={addCardIcon} alt=""/>
-                        <span>Hit</span>
-                    </button>
-                    <button
-                        className='btn btn-game-action btn-double'
-                        onClick={double}
-                    >
-                        <span className='top-text'>Double</span>
-                        <span className='bottom-text'>X2</span>
-                    </button>
-                    <button
-                        className='btn btn-game-action btn-stand'
+                        className={`btn btn-game-action btn-stand ${gameState.double ? "double" : ""}`}
                         onClick={stay}
                     >
                         <img src={handIcon} alt=""/>
@@ -178,15 +179,18 @@ export default function GameActions(props){
                 </div>
             </div>
             )}
-            {gameState.roundEnded && (
+            {(gameState.roundEnded && gameState.currentBalance > 0) && 
                 <div className='game-action-buttons'>
-                    <button
-                        className='btn btn-game-action'
-                        onClick={repeatBet}
-                    >
-                        <img src={repeatBetIcon} alt=""/>
-                        <span>Bet ${gameState.bet}</span>
-                    </button>
+                    {
+                        gameState.bet <= gameState.currentBalance &&
+                        <button
+                            className='btn btn-game-action'
+                            onClick={repeatBet}
+                        >
+                            <img src={repeatBetIcon} alt=""/>
+                            <span>Bet ${gameState.bet}</span>
+                        </button>
+                    }
 
                     <button
                         className='btn btn-game-action'
@@ -205,7 +209,27 @@ export default function GameActions(props){
                         <span>Cash out</span>
                     </Link>
                 </div>
-            )}
+            }
+            {
+                gameState.currentBalance < 1 && 
+                <div className='game-action-buttons'>
+                    <Link
+                        to="/blackjack/add-funds"
+                        className='btn btn-game-action'
+                        onClick={cashOut}
+                    >
+                        <img src={dollarIcon} alt=""/>
+                        <span>Add funds</span>
+                    </Link>
+                    <Link
+                        to="/blackjack/end-game"
+                        className='btn btn-game-action'
+                        onClick={cashOut}
+                    >
+                        <span>End Game</span>
+                    </Link>
+                </div>
+            }
         </div>
     )
 }

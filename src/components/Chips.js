@@ -1,9 +1,20 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Chip from './Chip'
 
 export default function Chips(props){
     const {gameState, setGameState} = props
-    
+    useEffect(() => {
+        if (gameState.availableBetOptions){
+            setGameState(prevState => ({
+                ...prevState,
+                availableBetOptions: prevState.availableBetOptions.filter(betOption => {
+                    return betOption <= prevState.currentBalance
+                })
+            }))
+        }
+    // eslint-disable-next-line
+    }, [gameState.currentBalance])
+
     function placeBet(bet){
         setGameState(prevState => ({
             ...prevState,
@@ -13,7 +24,7 @@ export default function Chips(props){
 
     function renderChips(){
         return gameState.availableBetOptions.map((betOption, index) => {
-            return gameState.bet !== betOption ? (
+            return betOption !== gameState.bet ? (
             <Chip
                 key={index}
                 betOption={betOption}
@@ -26,8 +37,14 @@ export default function Chips(props){
     }
     
     return (
-        <div className='chips'>
-            {gameState.availableBetOptions && renderChips()}
+        <div>
+            {
+                gameState.availableBetOptions && 
+                <div className='chips'>
+                    {renderChips()}
+                </div>
+            }
         </div>
+        
     )
 }

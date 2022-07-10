@@ -18,6 +18,7 @@ button, a {
     cursor: pointer;
     font-family: inherit;
     text-decoration: none;
+    color: inherit;
 }
 
 .opening-screen-container{
@@ -84,12 +85,27 @@ button, a {
     margin-left: 3rem;
 }
 
-.balance {
-    font-size: 1.75rem;
+.gains{
+    bottom: 0;
+    position: absolute;
+    width: 85%;
+}
+
+.balance,
+.win-amount {
+    font-size: 1.5rem;
     max-width: max-content;
-    background: #123650;
     padding: 1rem 1.5rem;
     border-radius: 10px 10px 0 0;
+}
+
+.balance{
+    background: #123650;
+}
+
+.win-amount {
+    background: rgb(137, 89, 0);
+    margin-left: auto;
 }
 
 .funds {
@@ -104,6 +120,10 @@ button, a {
     flex-wrap: wrap;
     padding: 1rem;
     border-radius: 0 10px 0 0 ;
+}
+
+.chips-hidden{
+    display: none;
 }
 
 .chip {
@@ -173,6 +193,17 @@ button, a {
     justify-content: center;
 }
 
+.chip-amount.double {
+    text-align: center;
+    top: 2.5rem;
+    transform: translate(-50%, 0);
+    font-size: 1rem;
+}
+
+.game-action-buttons.no-double .btn-game-action{
+    margin: 0 13rem;
+}
+
 .current-bet {
     position: absolute;
     top: 50%;
@@ -202,15 +233,16 @@ button, a {
 }
 
 .playing-card{
-    max-width: 11vw;
+    max-width: 10vw;
     box-shadow: 0px 0px 15px 0px rgba(0,0,0, 0.18);
 }
 
 .playing-card + .playing-card{
-    margin-left: -9.3vw;
+    margin-left: -8.3vw;
 }
 
 .btn-game-action{
+    font-size: 1.3rem;
     background: linear-gradient(to bottom, #36c14a, #23a61a);
     padding: 0;
     width: 13vw;
@@ -248,9 +280,14 @@ button, a {
     line-height: 1;
 }
 
+.btn-stand.double{
+    margin-left: 42rem;
+}
+
 .game-action-buttons{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .game-actions{
@@ -268,7 +305,7 @@ button, a {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-28.5%, -50%);
+    transform: translate(-29.5%, -50%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -276,7 +313,7 @@ button, a {
 
 .btn img {
     max-width: 2rem;
-    margin-right: 1rem;
+    margin-right: .65rem;
     filter: invert(100%);
 }
 
@@ -372,10 +409,12 @@ button, a {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+    width:100%;
 }
 
-.end-game-container{
+.end-game-container,
+.add-funds-container{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -384,12 +423,45 @@ button, a {
     color: #3a3a3c;
 }
 
-.end-game-container .logo{
+.end-game-container .logo,
+.add-funds-container .logo{
     margin: 3rem 0;
     max-width: 240px;
 }
 
-.end-game-container .stats{
+.add-funds-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20rem;
+}
+
+.add-funds-input{
+    border: 2px solid #3a3a3c;
+    border-radius: 5px;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 0.25rem 1rem;
+    text-align: center;
+    width: 100%;
+    margin: 0 0 1.5rem 0;
+}
+
+.add-funds-btn{
+    box-shadow: none;
+    width: 100%;
+}
+
+.add-funds-btn:link{
+    color: #fff;
+}
+
+.add-funds-btn:visited{
+    color: #fff;
+}
+
+.end-game-container .stats,
+.add-funds-form{
     padding: 1rem;
     background: white;
     border-radius: 20px;

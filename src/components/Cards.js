@@ -1,10 +1,11 @@
 import React from 'react'
 import Card from './Card'
 import Message from './Message'
-import {calculateCardsSum} from '../utils/functions.js'
+import {analyzeCards} from '../utils/utils.js'
 
 export default function Cards(props){
     const {gameState, owner} = props
+    const [totalSum, hasBlackJack] = analyzeCards(gameState[owner])
     function renderCards(){
         if (gameState[owner].length === 1){
             const renderedCards = [...gameState[owner]]
@@ -26,7 +27,10 @@ export default function Cards(props){
             if (owner === 'dealerCards'){
                 return (
                     <Message
-                        message={`Dealer ${gameState.winAmount < 0 ? "wins" : "loses"}`}
+                        message={
+                            `${hasBlackJack ? "BlackJack!" :
+                            gameState.winAmount < 0 ? "Dealer wins" : "Bust"}`
+                        }
                         color={gameState.winAmount < 0 ? "blue" : "darkgray"}
                         delayed={gameState.winAmount < 0 ? false : true}
                     />
@@ -34,7 +38,10 @@ export default function Cards(props){
             } else if (owner === 'playerCards'){
                 return (
                     <Message
-                        message={`You ${gameState.winAmount > 0 ? "win" : "lose"}`}
+                        message={
+                            `${hasBlackJack ? "BlackJack!" : 
+                            gameState.winAmount > 0 ? "You win" : "Bust"}`
+                        }
                         color={gameState.winAmount > 0 ? "orange" : "darkgray"}
                         delayed={gameState.winAmount > 0 ? false : true}
                     />
@@ -50,7 +57,7 @@ export default function Cards(props){
             </div>
             
             <div className='sum-of-cards'>
-                <span className='sum-of-cards-number'>{calculateCardsSum(gameState[owner])}</span>
+                <span className='sum-of-cards-number'>{totalSum}</span>
                 <span className='sum-of-cards-label'>{owner === 'dealerCards' ? 'Dealer' : 'Player'}</span>
             </div>
 

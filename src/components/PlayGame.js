@@ -9,6 +9,7 @@ import dollarIcon from '../assets/icons/circe-dollar-sign-solid.svg'
 
 export default function PlayGame(props){
     const {gameState, setGameState} = props
+
     useEffect(() => {
         fetch('https://blackjack.fuzz.me.uk/sit', {
             method: 'POST',
@@ -25,6 +26,7 @@ export default function PlayGame(props){
             }))
         })
         .catch(err => console.error(err))
+        // eslint-disable-next-line
     }, [])
 
     function cashOut(){
@@ -47,7 +49,6 @@ export default function PlayGame(props){
                     roundStarted: false,
                     availableBetOptions: [],
                     bet: 0,
-                    gameStarted: false,
                     sessionId: "",
                     ...data
                 }))
@@ -89,12 +90,19 @@ export default function PlayGame(props){
                 </div>
             )}
             <section className='funds'>
-                <div className='balance'>Balance: <strong>${`${gameState.currentBalance}`}</strong></div>
-                {!gameState.roundStarted &&
+                <div className='balance'>
+                    Balance: <strong>${`${gameState.currentBalance}`}</strong>
+                </div>
+                {!gameState.roundStarted && 
                 <Chips
                     gameState={gameState}
                     setGameState={setGameState}
                 />}
+            </section>
+            <section className="gains">
+                <div className='win-amount'>
+                    Win Amount: <strong>{gameState.winAmount>=0 ? `$${gameState.winAmount}`: `-$${gameState.winAmount*-1}`}</strong>
+                </div>
             </section>
             </div>
         </div>
