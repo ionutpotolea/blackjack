@@ -39,7 +39,7 @@ export default function EndGame(props){
             </div>
             <Link
                 to="/blackjack/play-game"
-                className='btn btn-start-game'
+                className='btn btn-primary btn-start-game'
                 onClick={startGame}
             >
                 Play again

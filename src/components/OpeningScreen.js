@@ -16,7 +16,7 @@ export default function OpeningScreen(props){
             <img src={logo} className="logo" alt="game logo" />
             <Link
                 to="/blackjack/play-game"
-                className='btn btn-start-game'
+                className='btn btn-primary btn-start-game'
                 onClick={startGame}
             >
                 Play
