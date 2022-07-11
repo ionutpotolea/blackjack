@@ -1,3 +1,5 @@
+/*------------------- General styles ---------------------*/
+
 body{
     font-family: 'Open Sans', sans-serif;
     height: 100vh;
@@ -21,6 +23,8 @@ button, a {
     color: inherit;
 }
 
+/*------------------- Components ---------------------*/
+
 .opening-screen-container{
     height: 100vh;
     display: flex;
@@ -33,6 +37,178 @@ button, a {
 .logo{
     max-width: 480px;
 }
+
+.top-btns{
+    display: flex;
+}
+
+.gains{
+    bottom: 0;
+    position: absolute;
+    width: 85%;
+    animation: .5s ease-out 0s gainsSlideUp;
+}
+
+@keyframes gainsSlideUp {
+    0% {
+        bottom: -4.5rem;
+    }
+    100% {
+        bottom: 0;
+    }
+}
+
+.balance,
+.win-amount {
+    font-size: 1.5rem;
+    max-width: max-content;
+    padding: 1rem 1.5rem;
+    border-radius: 10px 10px 0 0;
+}
+
+.positive strong{
+    color:#0d8607;
+}
+
+.negative strong{
+    color:red;
+}
+
+.balance{
+    background: #123650;
+}
+
+.win-amount {
+    background: rgb(137, 89, 0);
+    margin-left: auto;
+}
+
+.funds {
+    max-width: 60%;
+    bottom: 0;
+    position: absolute;
+}
+
+.current-bet {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -65%);
+    max-width: max-content;
+    margin: 1rem auto;
+    display: flex;
+    align-items: center;
+}
+
+.game-action-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-actions{
+    width: 100%;
+}
+
+.current-bet .chip-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-actions .chip-container{
+    z-index: -1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-29.25%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.current-bet-amount{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-left: .5rem;
+    min-width: 5.8rem;
+}
+
+.cards-container{
+    display: flex;
+}
+
+.game-actions-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width:100%;
+}
+
+.end-game-container,
+.add-funds-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: #3a3a3c;
+}
+
+.end-game-container .logo,
+.add-funds-container .logo{
+    max-width: 240px;
+    margin: 3rem 0 0 0;
+}
+
+.add-funds-form{
+    margin: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20rem;
+}
+
+.add-funds-input{
+    border: 1px solid #3a3a3c;
+    border-radius: 5px;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 0.25rem 1rem;
+    text-align: center;
+    width: 100%;
+    margin: 0 0 1.5rem 0;
+}
+
+.end-game-container .stats,
+.add-funds-form{
+    padding: 1rem;
+    background: white;
+    border-radius: 20px;
+    text-align: left;
+    min-width: 18vw;
+    border: 10px solid #3a3a3c;
+    overflow: hidden;
+}
+
+.end-game-container .stats-title{
+    margin-top: 0;
+}
+
+.end-game-container .stats-list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.end-game-container .stats-item{
+    display: flex;
+    justify-content: space-between;
+}
+
+/*------------------- Buttons ---------------------*/
 
 .btn{
     background: #0dbbe0;
@@ -61,10 +237,6 @@ button, a {
 
 .btn-start-game{
     margin-top: 5rem;
-}
-
-.top-btns{
-    display: flex;
 }
 
 .btn-top + .btn-top {
@@ -107,46 +279,76 @@ button, a {
     margin-left: 3rem;
 }
 
-.gains{
-    bottom: 0;
-    position: absolute;
-    width: 85%;
-    animation: .5s ease-out 0s gainsSlideUp;
+.btn-game-action{
+    font-size: 1.3rem;
+    background: linear-gradient(to bottom, #36c14a, #23a61a);
+    padding: 0;
+    width: 13vw;
+    min-height: 4.7rem;
+    margin: 0 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-box-shadow: 0px 0px 15px 0px #000000; 
+    box-shadow: 0px 0px 15px 0px #000000;
 }
 
-@keyframes gainsSlideUp {
-    0% {
-        bottom: -4.5rem;
-    }
-    100% {
-        bottom: 0;
-    }
+.btn-game-action:hover{
+    background: linear-gradient(to bottom, #1ab22c, #0d8607);
 }
 
-.balance,
-.win-amount {
-    font-size: 1.5rem;
-    max-width: max-content;
-    padding: 1rem 1.5rem;
-    border-radius: 10px 10px 0 0;
+.btn-double{
+    flex-direction: column;
+    border-radius: 50%;
+    height: 10vh;
+    width: 10vh;
+    text-align: center;
+    padding: 0;
 }
 
-.balance{
-    background: #123650;
+.btn-double span.top-text{
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1;
 }
 
-.win-amount {
-    background: rgb(137, 89, 0);
-    margin-left: auto;
+.btn-double span.bottom-text{
+    display: block;
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1;
 }
 
-
-
-.funds {
-    max-width: 60%;
-    bottom: 0;
-    position: absolute;
+.btn img {
+    max-width: 2rem;
+    margin-right: .65rem;
+    filter: invert(100%);
 }
+
+.game-action-buttons.no-double .btn-game-action{
+    margin: 0 13rem;
+}
+
+.game-action-buttons.no-double .btn-stand.double{
+    margin: 0 0 0 42rem;
+}
+
+.add-funds-btn{
+    box-shadow: none;
+    width: 100%;
+    font-size: 1.25rem;
+}
+
+.add-funds-btn:link{
+    color: #fff;
+}
+
+.add-funds-btn:visited{
+    color: #fff;
+}
+
+/*------------------- Chips ---------------------*/
 
 .chips {
     background: #123650;
@@ -154,10 +356,6 @@ button, a {
     flex-wrap: wrap;
     padding: 1rem;
     border-radius: 0 10px 0 0 ;
-}
-
-.chips-hidden{
-    display: none;
 }
 
 .chip {
@@ -234,24 +432,7 @@ button, a {
     font-size: 1rem;
 }
 
-.game-action-buttons.no-double .btn-game-action{
-    margin: 0 13rem;
-}
-
-.game-action-buttons.no-double .btn-stand.double{
-    margin: 0 0 0 42rem;
-}
-
-.current-bet {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -65%);
-    max-width: max-content;
-    margin: 1rem auto;
-    display: flex;
-    align-items: center;
-}
+/*------------------- Cards ---------------------*/
 
 .cards{
     text-align: center;
@@ -279,91 +460,7 @@ button, a {
     margin-left: -8.3vw;
 }
 
-.btn-game-action{
-    font-size: 1.3rem;
-    background: linear-gradient(to bottom, #36c14a, #23a61a);
-    padding: 0;
-    width: 13vw;
-    min-height: 4.7rem;
-    margin: 0 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    -webkit-box-shadow: 0px 0px 15px 0px #000000; 
-    box-shadow: 0px 0px 15px 0px #000000;
-}
-
-.btn-game-action:hover{
-    background: linear-gradient(to bottom, #1ab22c, #0d8607);
-}
-
-.btn-double{
-    flex-direction: column;
-    border-radius: 50%;
-    height: 10vh;
-    width: 10vh;
-    text-align: center;
-    padding: 0;
-}
-
-.btn-double span.top-text{
-    display: block;
-    font-size: 0.9rem;
-    font-weight: 500;
-    line-height: 1;
-}
-
-.btn-double span.bottom-text{
-    display: block;
-    font-size: 2.25rem;
-    font-weight: 700;
-    line-height: 1;
-}
-
-.game-action-buttons{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.game-actions{
-    width: 100%;
-}
-
-.current-bet .chip-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.game-actions .chip-container{
-    z-index: -1;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-29.25%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn img {
-    max-width: 2rem;
-    margin-right: .65rem;
-    filter: invert(100%);
-}
-
-.current-bet-amount{
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #fff;
-    margin-left: .5rem;
-    min-width: 5.8rem;
-}
-
-.cards-container{
-    display: flex;
-}
+/*------------------- Sum of Cards ---------------------*/
 
 .sum-of-cards{
     position: absolute;
@@ -388,6 +485,8 @@ button, a {
     font-size: 1.5rem;
     font-weight: 500;
 }
+
+/*------------------- Win/Lose Message ---------------------*/
 
 @keyframes messageScale {
     0% {
@@ -441,96 +540,7 @@ button, a {
     z-index: 100;
 }
 
-.game-actions-container{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width:100%;
-}
-
-.end-game-container,
-.add-funds-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.25rem;
-    color: #3a3a3c;
-}
-
-.end-game-container .logo,
-.add-funds-container .logo{
-    max-width: 240px;
-    margin: 3rem 0 0 0;
-}
-
-.add-funds-form{
-    margin: 3rem 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 20rem;
-}
-
-.add-funds-input{
-    border: 1px solid #3a3a3c;
-    border-radius: 5px;
-    font-size: 2rem;
-    font-weight: 700;
-    padding: 0.25rem 1rem;
-    text-align: center;
-    width: 100%;
-    margin: 0 0 1.5rem 0;
-}
-
-.add-funds-btn{
-    box-shadow: none;
-    width: 100%;
-    font-size: 1.25rem;
-}
-
-.add-funds-btn:link{
-    color: #fff;
-}
-
-.add-funds-btn:visited{
-    color: #fff;
-}
-
-.end-game-container .stats,
-.add-funds-form{
-    padding: 1rem;
-    background: white;
-    border-radius: 20px;
-    text-align: left;
-    min-width: 18vw;
-    border: 10px solid #3a3a3c;
-    overflow: hidden;
-}
-
-.end-game-container .stats-title{
-    margin-top: 0;
-}
-
-.end-game-container .stats-list{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.end-game-container .stats-item{
-    display: flex;
-    justify-content: space-between;
-}
-
-.positive strong{
-    color:#0d8607;
-}
-
-.negative strong{
-    color:red;
-}
+/*------------------- Media Queries ---------------------*/
 
 @media (max-width: 1200px) {
     .message-text{
@@ -541,4 +551,3 @@ button, a {
         width: 9.75rem;
     }
 }
-

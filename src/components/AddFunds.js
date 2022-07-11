@@ -5,7 +5,7 @@ import logo from '../assets/images/logo.png'
 export default function AddFunds(props){
     const {gameState, setGameState} = props
     const [formData, setFormData] = useState({
-        newFunds: 50
+        newFunds: 1000-gameState.currentBalance>50 ? 50 : 1000-gameState.currentBalance
     })
     let history = useHistory();
 
