@@ -1,7 +1,6 @@
 import React from "react"
 import {Link} from "react-router-dom"
 import logo from '../assets/images/logo.png'
-import {resetState} from '../utils/utils'
 
 export default function EndGame(props){
     const {gameState, setGameState} = props
@@ -12,7 +11,6 @@ export default function EndGame(props){
             currentBalance: prevState.currentBalance > 1000 ? 1000 : prevState.currentBalance,
             availableBetOptions: [],
             bet: 0,
-            winAmount: 0,
             double: false,
             roundStarted: false,
             roundEnded: false,
