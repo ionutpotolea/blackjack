@@ -5,26 +5,32 @@ import PlaceBet from "./PlaceBet"
 import Cards from "./Cards"
 import GameActions from "./GameActions"
 import dollarIcon from '../assets/icons/circe-dollar-sign-solid.svg'
+import {resetState} from '../utils/utils'
 
 
 export default function PlayGame(props){
     const {gameState, setGameState} = props
     useEffect(() => {
-        fetch('https://blackjack.fuzz.me.uk/sit', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-              },
-            body: `balance=${gameState.currentBalance}`
-        })
-        .then(res => res.json())
-        .then(data => { 
-            setGameState(prevState => ({
-                ...prevState,
-                ...data
-            }))
-        })
-        .catch(err => console.error(err))
+        if (!gameState.sessionId){
+            fetch('https://blackjack.fuzz.me.uk/sit', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                  },
+                body: `balance=${gameState.currentBalance}`
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(!data.error){
+                    setGameState(prevState => ({
+                        ...prevState,
+                        ...data
+                    }))
+                }
+            })
+            .catch(err => console.error(err))    
+        }
+        
         // eslint-disable-next-line
     }, [])
 
@@ -40,12 +46,8 @@ export default function PlayGame(props){
             .then(data => { 
                 setGameState(prevState => ({
                     ...prevState,
-                    dealerCards: null,
-                    dealerCard: null,
-                    playerCards: null,
-                    playerCard: null,
-                    roundEnded: false,
-                    roundStarted: false,
+                    ...resetState,
+                    gameStarted: false,
                     availableBetOptions: [],
                     bet: 0,
                     sessionId: "",

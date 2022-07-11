@@ -5,7 +5,7 @@ import logo from '../assets/images/logo.png'
 export default function AddFunds(props){
     const {gameState, setGameState} = props
     const [formData, setFormData] = useState({
-        newFunds: 1000-gameState.currentBalance>50 ? 50 : 1000-gameState.currentBalance
+        newFunds: 1000-gameState.currentBalance>50 ? 50 : 0
     })
     let history = useHistory();
 
@@ -59,13 +59,21 @@ export default function AddFunds(props){
                     Add Funds
                 </button>
             </form>
-            <Link
-                to="/blackjack/play-game"
-                className='btn btn-primary'
-                onClick={startGame}
-            >
-                Play
-            </Link>
+            <div className="add-funds-btns">
+                <button
+                    className='btn btn-primary'
+                    onClick={() => history.goBack()}
+                >
+                    Back
+                </button>
+                <Link
+                    to="/blackjack/play-game"
+                    className='btn btn-primary'
+                    onClick={startGame}
+                >
+                    New Game
+                </Link>
+            </div>
         </div>
     )
 }

@@ -9,6 +9,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;
+    overflow: hidden;
 }
 
 .container{
@@ -182,7 +183,7 @@ button, a {
     margin: 0 0 1.5rem 0;
 }
 
-.end-game-container .stats,
+.stats,
 .add-funds-form{
     padding: 1rem;
     background: white;
@@ -191,6 +192,15 @@ button, a {
     min-width: 18vw;
     border: 10px solid #3a3a3c;
     overflow: hidden;
+    margin-top: 3rem;
+}
+
+.add-funds-btns{
+    display: flex;
+}
+
+.add-funds-btns .btn{
+    margin-left: 1.5rem;
 }
 
 .end-game-container .stats-title{
