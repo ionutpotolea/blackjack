@@ -4,20 +4,18 @@ import Chip from './Chip'
 export default function Chips(props){
     const {gameState, setGameState} = props
     useEffect(() => {
-        if (gameState.availableBetOptions){
-            setGameState(prevState => ({
-                ...prevState,
-                availableBetOptions: prevState.availableBetOptions.filter(betOption => {
-                    return betOption <= prevState.currentBalance
-                })
-            }))
-        }
         if(gameState.currentBalance<100 &&
-            gameState.currentBalance>2 &&
             !gameState.availableBetOptions.includes(2)){
             setGameState(prevState => ({
                 ...prevState,
                 availableBetOptions: [...prevState.availableBetOptions, 2].sort((a, b) => a-b)
+            }))
+        }
+        if(gameState.currentBalance>=100 &&
+            gameState.availableBetOptions.includes(2)){
+            setGameState(prevState => ({
+                ...prevState,
+                availableBetOptions: [...prevState.availableBetOptions.filter(bet => bet!==2)].sort((a, b) => a-b)
             }))
         }
     // eslint-disable-next-line
@@ -32,7 +30,9 @@ export default function Chips(props){
 
     function renderChips(){
         return gameState.availableBetOptions.map((betOption, index) => {
-            return betOption !== gameState.bet ? (
+            return (
+                betOption !== gameState.bet &&
+                betOption <= gameState.currentBalance) ? (
             <Chip
                 key={index}
                 betOption={betOption}

@@ -108,11 +108,15 @@ export default function PlayGame(props){
                     setGameState={setGameState}
                 />}
             </section>
-            <section className="gains">
-                <div className='win-amount'>
-                    Win Amount: <strong>{gameState.winAmount>=0 ? `$${gameState.winAmount}`: `-$${gameState.winAmount*-1}`}</strong>
-                </div>
-            </section>
+            {
+                gameState.winAmount !== 0 &&
+                <section className="gains">
+                    <div className='win-amount'>
+                        Win Amount: <strong>{gameState.winAmount>=0 ? `$${gameState.winAmount}`: `-$${gameState.winAmount*-1}`}</strong>
+                    </div>
+                </section>
+            }
+            
             </div>
         </div>
     )

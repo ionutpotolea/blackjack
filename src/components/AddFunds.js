@@ -5,7 +5,7 @@ import logo from '../assets/images/logo.png'
 export default function AddFunds(props){
     const {gameState, setGameState} = props
     const [formData, setFormData] = useState({
-        newFunds: 0
+        newFunds: 50
     })
     let history = useHistory();
 
@@ -30,6 +30,7 @@ export default function AddFunds(props){
         e.preventDefault()
         setGameState(prevState => ({
             ...prevState,
+            winAmount: 0,
             currentBalance: prevState.currentBalance + formData.newFunds
         }))
         history.push("/blackjack/play-game");

@@ -11,7 +11,6 @@ import dollarIcon from '../assets/icons/circe-dollar-sign-solid.svg'
 
 export default function GameActions(props){
     const {gameState, setGameState} = props
-    console.log(gameState)
 
     function hit(){
         if(!gameState.roundEnded){

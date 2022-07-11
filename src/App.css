@@ -111,6 +111,16 @@ button, a {
     bottom: 0;
     position: absolute;
     width: 85%;
+    animation: .5s ease-out 0s gainsSlideUp;
+}
+
+@keyframes gainsSlideUp {
+    0% {
+        bottom: -4.5rem;
+    }
+    100% {
+        bottom: 0;
+    }
 }
 
 .balance,
@@ -129,6 +139,8 @@ button, a {
     background: rgb(137, 89, 0);
     margin-left: auto;
 }
+
+
 
 .funds {
     max-width: 60%;
@@ -529,3 +541,4 @@ button, a {
         width: 9.75rem;
     }
 }
+
