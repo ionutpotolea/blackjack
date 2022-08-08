@@ -12,9 +12,9 @@ export default function Card(props){
 
     return (
         <img
-                className="playing-card"
-                alt="playing-card"
-                src={images[`${card.suite}${card.rank}.png`]}
-            />
+            className="playing-card"
+            alt="playing-card"
+            src={images[`${card.suite}${card.rank}.png`]}
+        />
     )
 }

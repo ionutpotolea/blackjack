@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react'
 import {Link} from "react-router-dom"
+
 import Chips from "./Chips"
 import PlaceBet from "./PlaceBet"
 import Cards from "./Cards"
 import GameActions from "./GameActions"
-import dollarIcon from '../assets/icons/circe-dollar-sign-solid.svg'
 import {resetState} from '../utils/utils'
+
+
+import dollarIcon from '../assets/icons/circe-dollar-sign-solid.svg'
+
 
 
 export default function PlayGame(props){
@@ -30,6 +34,8 @@ export default function PlayGame(props){
             })
             .catch(err => console.error(err))    
         }
+
+        return 
         
         // eslint-disable-next-line
     }, [])

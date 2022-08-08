@@ -1,7 +1,7 @@
 import React from 'react'
 import Chip from './Chip'
 
-export default function CurrentBet(props){
+export default function PlaceBet(props){
     const {gameState, setGameState} = props
 
     function removeBet(){

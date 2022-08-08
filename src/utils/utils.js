@@ -29,7 +29,7 @@ const analyzeCards = (cardsArray) => {
     if (totalSum <= 21-acesPointsCountOption){
         totalSum += acesPointsCountOption
     } else {
-         // option 2: count all ace as 1
+         // option 2: count all aces as 1
         totalSum += foundAces
     }
 
@@ -44,8 +44,6 @@ const analyzeCards = (cardsArray) => {
     return [totalSum, hasBlackJack]
 }
 
-
-
 const resetState = {
     dealerCards: null,
     dealerCard: null,
@@ -58,4 +56,4 @@ const resetState = {
     winAmount: 0
 }
 
-export {chipColor, analyzeCards, resetState}
+export {chipColor, analyzeCards, resetState, url}

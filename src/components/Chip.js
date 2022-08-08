@@ -16,7 +16,7 @@ export default function Chip(props) {
                 }
                 <span className='chip-amount'>{betOption}</span>
             </div>
-                {staked && <span className='current-bet-amount'>${gameState.double? 2*gameState.bet : gameState.bet}</span>}
+            {staked && <span className='current-bet-amount'>${gameState.double? 2*gameState.bet : gameState.bet}</span>}
         </div>
     )
 }

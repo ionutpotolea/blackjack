@@ -15,6 +15,7 @@ function App() {
     bet: 0,
     winAmount: 0,
     double: false,
+    doubleAvailable: true,
     roundStarted: false,
     roundEnded: false
   })
